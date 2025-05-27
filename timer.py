@@ -17,19 +17,17 @@ def convertMinutesToSeconds(time_str):
 
 print(convertMinutesToSeconds("2:20"))
 
-timeInSeconds = convertMinutesToSeconds()
+timeInSeconds = convertMinutesToSeconds("0:20")
 
-def countdown():
-    t = input("Enter time in seconds \n")
-    convertMinutesToSeconds(t)
-    while t:
-        mins, secs = divmod(t, 60)
+def countdown(TimeFromUser):
+    while TimeFromUser:
+        mins, secs = divmod(TimeFromUser, 60)
         timer = '{:02d}:{:02d}'.format(mins, secs)
         print(f'\r{timer}', end='', flush=True)
         time.sleep(1)
-        t -= 1
+        TimeFromUser -= 1
     print("\nTime to get up now")
 
 
 
-countdown()
+countdown(timeInSeconds)
