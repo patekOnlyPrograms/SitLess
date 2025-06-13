@@ -1,5 +1,10 @@
 import time
 import datetime
+import asyncio
+import dbus
+from desktop_notifier import DesktopNotifier, Button
+
+notifier = DesktopNotifier()
 
 def convertMinutesToSeconds(time_str):
     parts = list(map(int, time_str.split(':')))
@@ -15,19 +20,29 @@ def convertMinutesToSeconds(time_str):
         raise ValueError("Invalid time format. Use HH:MM:SS, MM:SS, or SS.")
 
 
-print(convertMinutesToSeconds("2:20"))
+#print(convertMinutesToSeconds("2:20"))
 
-timeInSeconds = convertMinutesToSeconds("0:20")
+timeInSeconds = convertMinutesToSeconds("0:05")
 
-def countdown(TimeFromUser):
+
+async def countdown(TimeFromUser):
     while TimeFromUser:
         mins, secs = divmod(TimeFromUser, 60)
         timer = '{:02d}:{:02d}'.format(mins, secs)
         print(f'\r{timer}', end='', flush=True)
         time.sleep(1)
         TimeFromUser -= 1
+    await notifier.send(title="SitLess",
+                        message="Time to get up",
+                        buttons=[
+                            Button(
+                                title="Restart",
+                                on_pressed= print(f"\nRestarting Counter")
+                            )
+                        ])
     print("\nTime to get up now")
 
 
 
-countdown(timeInSeconds)
+
+asyncio.run(countdown(timeInSeconds))
