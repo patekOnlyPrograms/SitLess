@@ -1,45 +1,18 @@
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QDial, QWidget, QMainWindow, QLabel, QVBoxLayout
-import sys
+from flask_bootstrap import Bootstrap5
+from flask import Flask, render_template
 
 
-#QT_QPA_PLATFORM = 'wayland'
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("SitLess")
-        #button = QPushButton("Click Me")
-        self.setMinimumSize(QSize(400,300))
-        self.setCentralWidget(self.Dial_Components())
 
-    def Dial_Components(self):
-        container = QWidget()
-        layout = QVBoxLayout()
+app = Flask(__name__)
+bootstrap = Bootstrap5(app)
+@app.route("/")
+@app.route("/index")
+def main():
+    return render_template('index.html')
 
-        dial = QDial(self)
-        dial.setGeometry(100, 100, 100, 100)
-        dial.setNotchesVisible(True)
-        dial.setMaximum(0)
 
-        dial.setSingleStep(5)
-        dial.setWrapping(False)
-        dial.notchSize()
 
-        #Label information 
-        label = QLabel("Set how long do you want to reminded?")
-        label.setGeometry(200, 200, 200, 200)
-        label.setWordWrap(True)
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        layout.addWidget(dial)
-        layout.addWidget(label)
-
-        container.setLayout(layout)
-        return container
-
-app = QApplication(sys.argv)
-window = MainWindow()
-window.show()
-
-app.exec()
+if __name__ == "__main__":
+    app.run()

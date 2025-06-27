@@ -1,10 +1,9 @@
 import time
 import datetime
 import asyncio
-import dbus
-from desktop_notifier import DesktopNotifier, Button
+#from desktop_notifier import DesktopNotifier, Button
 
-notifier = DesktopNotifier()
+#notifier = DesktopNotifier()
 
 def convertMinutesToSeconds(time_str):
     parts = list(map(int, time_str.split(':')))
@@ -22,10 +21,10 @@ def convertMinutesToSeconds(time_str):
 
 #print(convertMinutesToSeconds("2:20"))
 
-timeInSeconds = convertMinutesToSeconds("0:05")
+timeInSeconds = print(convertMinutesToSeconds("0:05"))
 
 
-async def countdown(TimeFromUser):
+"""async def countdown(TimeFromUser):
     while TimeFromUser:
         mins, secs = divmod(TimeFromUser, 60)
         timer = '{:02d}:{:02d}'.format(mins, secs)
@@ -45,4 +44,4 @@ async def countdown(TimeFromUser):
 
 
 
-asyncio.run(countdown(timeInSeconds))
+asyncio.run(countdown(timeInSeconds))"""
