@@ -12,9 +12,9 @@ bootstrap = Bootstrap5(app)
 @app.route("/index", methods=["GET", "POST"])
 def main():
     if request.method == "POST":
-        getDuration = request.form.get("duration")
-        if getDuration:
-            seconds=convertMinutesToSeconds(getDuration)
+        get_duration = request.form.get("duration")
+        if get_duration:
+            seconds=convertMinutesToSeconds(get_duration)
             thread = threading.Thread(target=start_async_timer, args=(seconds,))
             thread.start()
     return render_template('index.html')

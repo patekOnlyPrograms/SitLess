@@ -20,11 +20,13 @@ def convertMinutesToSeconds(time_str):
         raise ValueError("Invalid time format. Use HH:MM:SS, MM:SS, or SS.")
 
 async def countdown(seconds):
-    while seconds:
-        mins, seconds = divmod(seconds, 60)
-        print(f"{mins:02d}:{seconds:02d}", end="\r", flush=True)
+    print("timer started")
+    remaining = seconds
+    while remaining:
+        mins, seconds = divmod(remaining, 60)
+        print(f"{mins:02d}:{seconds:02d}")
         await asyncio.sleep(1)
-        seconds -= 1
+        remaining -= 1
     print("\n[NOTIFY] Time to get up!")
 #print(convertMinutesToSeconds("2:20"))
 
