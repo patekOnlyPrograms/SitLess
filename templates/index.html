@@ -15,6 +15,8 @@
 </div>
 
 
+<div id="countdownClock" class="mt-20 fs-3 fw-bold text-primary text-center"></div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -30,34 +32,48 @@
       const buttons = document.querySelectorAll("button[name='duration']");
       buttons.forEach(button => {
           button.addEventListener("click", function (event){
+              event.preventDefault()
               handleDurationClick(this)
           })
       })
   })
 
-  function clickFUnc() {
-    console.log(this.value)
-    TIME_LEFT = this.value
-    let parts = TIME_LEFT.split(':')
+  function handleDurationClick(button){
+    TIME_LEFT = button.value
+
+    const parts = TIME_LEFT.split(':')
     minutes = parseInt(parts[0], 10)
     seconds = parseInt(parts[1], 10)
-  }
 
-
-  function handleDurationClick(button){
-      TIME_LEFT = button.value
-
-      const parts = TIME_LEFT.split(':')
-      minutes = parseInt(parts[0], 10)
-      seconds = parseInt(parts[1], 10)
-
+    const totalSeconds = minutes * 60 + seconds
+    startTimer(totalSeconds)
 
   }
 
-  function startTimer(){
+  function startTimer(duration){
+    let remaining = duration
+
+    updateWindow(remaining)
+
+    if (timerInterval) clearInterval(timerInterval)
+
     timerInterval = setInterval(() => {
+      remaining--
 
-    })
+      if (remaining < 0){
+        clearInterval(timerInterval)
+        document.getElementById("countdownClock").textContent = "Times up!"
+        return
+      }
+      updateWindow(remaining)
+    }, 1000)
+  }
+
+  function updateWindow(secondsLeft){
+    const mins = Math.floor(secondsLeft/ 60)
+    const secs = secondsLeft % 60
+    const display = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    document.getElementById("countdownClock").textContent = display;
   }
 </script>
 {% endblock %}
