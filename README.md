@@ -6,6 +6,11 @@
 An application to help you get up in set intervals to help you stretch your legs
 and help with circulation and get some fresh air.
 
+## Technologies used
+
+Built using Flask, HTML, CSS and Java. With some Jinja2 templating to help with consistency
+between the different pages. 
+
 ## Getting Started
 
 ### Prerequisites
