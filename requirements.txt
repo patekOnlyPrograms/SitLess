@@ -1,11 +1,20 @@
 blinker @ file:///croot/blinker_1737448726027/work
 Bootstrap-Flask @ file:///home/conda/feedstock_root/build_artifacts/bootstrap-flask_1746221450966/work
+brotlicffi @ file:///croot/brotlicffi_1736182461069/work
+certifi @ file:///croot/certifi_1750863846190/work/certifi
+cffi @ file:///croot/cffi_1736182485317/work
+charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
 click @ file:///croot/click_1744271578095/work
 Flask @ file:///croot/flask_1737454299809/work
+idna @ file:///croot/idna_1714398848350/work
 itsdangerous @ file:///croot/itsdangerous_1716533337253/work
 Jinja2 @ file:///croot/jinja2_1741710844255/work
 MarkupSafe @ file:///croot/markupsafe_1738584038848/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+PySocks @ file:///work/perseverance-python-buildout/croot/pysocks_1698845478203/work
+requests @ file:///croot/requests_1750426329888/work
 setuptools==78.1.1
+urllib3 @ file:///croot/urllib3_1750775463400/work
 Werkzeug @ file:///croot/werkzeug_1737448706492/work
 wheel==0.45.1
 WTForms @ file:///Users/ktietz/demo/mc3/conda-bld/wtforms_1629354749392/work
