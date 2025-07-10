@@ -1,6 +1,9 @@
 # SitLess
 
 
+![Sitless](static/SitLess.png =200x200)
+
+
 ## Project Description
 
 An application to help you get up in set intervals to help you stretch your legs
