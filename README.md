@@ -1,7 +1,8 @@
 # SitLess
 
-
-<div style="text-align: center;"><img src="static/SitLess.png" width="500" height="500"></div>
+<p align="center">
+    <img src="static/SitLess.png" width="500" height="500">
+p>
 
 
 ## Project Description
