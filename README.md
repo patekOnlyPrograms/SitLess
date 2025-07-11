@@ -1,7 +1,7 @@
 # SitLess
 
 
-![Sitless](static/SitLess.png =200x200)
+<div style="text-align: center;"><img src="static/SitLess.png" width="1024" height="1024"></div>
 
 
 ## Project Description
