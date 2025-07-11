@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="static/SitLess.png" width="500" height="500">
-p>
+</p>
 
 
 ## Project Description
