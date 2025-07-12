@@ -3,6 +3,7 @@
 {% block title %}Home - SitLess{% endblock %}
 
 {% block content %}
+<span id="DialogBox"></span>
 <div class="container text-center mt-5">
   <h1 class="mb-4">Choose a Time Interval</h1>
 
@@ -50,6 +51,16 @@
 
   }
 
+  function popUpAfterTimer(){
+    var userMessage = confirm("Timers Up! \nDo you wand to add this to your history?")
+    var y
+      if (userMessage === true)
+        { y = "Yes"; }
+      else
+        { y = "No"; }
+      document.log("DialogBox").innerHTML = "You pressed: " + y
+  }
+
   function startTimer(duration){
     let remaining = duration
 
@@ -63,10 +74,12 @@
       if (remaining < 0){
         clearInterval(timerInterval)
         document.getElementById("countdownClock").textContent = "Times up!"
+        popUpAfterTimer()
         return
       }
       updateWindow(remaining)
     }, 1000)
+
   }
 
   function updateWindow(secondsLeft){
