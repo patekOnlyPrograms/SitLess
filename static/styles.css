@@ -1,0 +1,10 @@
+/*navbar {*/
+/*    backdrop-color: black;*/
+/*    border: white;*/
+/*    border-width: medium;*/
+/*}*/
+
+.selected-time {
+  border: 5px solid #fd0d0d;
+  box-shadow: 0 0 10px rgb(157, 253, 13);
+}
