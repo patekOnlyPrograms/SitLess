@@ -60,9 +60,19 @@ function handleDurationClick(button) {
 
 // Timer finished popup
 function popUpAfterTimer() {
-  const userMessage = confirm("Time's Up! \nDo you want to add this to your history?");
-  const choice = userMessage ? "Yes" : "No";
-  document.getElementById("DialogBox");
+  Swal.fire({
+    title: 'Error!',
+    text: 'Do you want to continue',
+    icon: 'error',
+    confirmButtonText: 'Cool'
+  }).then((result) => {
+    if(result.isConfirmed){
+      console.log("User clicked Yes");
+    }
+    else{
+      console.log("User clicked No");
+    }
+  })
 }
 
 // Start the timer
