@@ -8,11 +8,16 @@
   <h1 class="mb-4">Choose a Time Interval</h1>
 
   <form id="timeSelection" method="POST" action="/">
-    <button type="submit" name="duration" id="5sec" value="00:05" class="btn btn-primary m-2">5 Seconds</button>
-    <button type="submit" name="duration" id="10min" value="10:00" class="btn btn-primary m-2">10 Minutes</button>
-    <button type="submit" name="duration" id="20min" value="20:00" class="btn btn-primary m-2">20 Minutes</button>
-    <button type="submit" name="duration" id="30min" value="30:00" class="btn btn-primary m-2">30 Minutes</button>
+    <button type="button" name="duration" id="5sec" value="00:05" class="btn btn-primary m-2">5 Seconds</button>
+    <button type="button" name="duration" id="10min" value="10:00" class="btn btn-primary m-2">10 Minutes</button>
+    <button type="button" name="duration" id="20min" value="20:00" class="btn btn-primary m-2">20 Minutes</button>
+    <button type="button" name="duration" id="30min" value="30:00" class="btn btn-primary m-2">30 Minutes</button>
   </form>
+
+  <button type="button" name="start" id="start" class="btn btn-primary m-2">Start</button>
+  <button type="button" name="pause" id="pause" class="btn btn-primary m-2">Pause</button>
+
+
 </div>
 
 
@@ -21,72 +26,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-  let TIME_LEFT = null
-  let minutes = null
-  let seconds = null
-  let timerInterval = null
-  console.log("Hello from child template!");
-
-
-  document.addEventListener("DOMContentLoaded", () => {
-      const buttons = document.querySelectorAll("button[name='duration']");
-      buttons.forEach(button => {
-          button.addEventListener("click", function (event){
-              event.preventDefault()
-              handleDurationClick(this)
-          })
-      })
-  })
-
-  function handleDurationClick(button){
-    TIME_LEFT = button.value
-
-    const parts = TIME_LEFT.split(':')
-    minutes = parseInt(parts[0], 10)
-    seconds = parseInt(parts[1], 10)
-
-    const totalSeconds = minutes * 60 + seconds
-    startTimer(totalSeconds)
-
-  }
-
-  function popUpAfterTimer(){
-    var userMessage = confirm("Timers Up! \nDo you wand to add this to your history?")
-    var y
-      if (userMessage === true)
-        { y = "Yes"; }
-      else
-        { y = "No"; }
-      document.log("DialogBox").innerHTML = "You pressed: " + y
-  }
-
-  function startTimer(duration){
-    let remaining = duration
-
-    updateWindow(remaining)
-
-    if (timerInterval) clearInterval(timerInterval)
-
-    timerInterval = setInterval(() => {
-      remaining--
-
-      if (remaining < 0){
-        clearInterval(timerInterval)
-        document.getElementById("countdownClock").textContent = "Times up!"
-        popUpAfterTimer()
-        return
-      }
-      updateWindow(remaining)
-    }, 1000)
-
-  }
-
-  function updateWindow(secondsLeft){
-    const mins = Math.floor(secondsLeft/ 60)
-    const secs = secondsLeft % 60
-    const display = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    document.getElementById("countdownClock").textContent = display;
-  }
-</script>
+  <script src="{{ url_for('static', filename='/countdownTimer.js') }}"></script>
 {% endblock %}
