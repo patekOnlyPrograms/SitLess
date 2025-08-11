@@ -1,5 +1,4 @@
 import threading
-
 from flask_bootstrap import Bootstrap5
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
@@ -34,6 +33,18 @@ def main():
 
 def start_async_timer(seconds):
     asyncio.run(countdown(seconds))
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    return render_template('login.html')
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    return render_template('signup.html')
+
+@app.route("/stretches", methods=["GET"])
+def stretches():
+    return render_template('stretches.html')
 
 
 if __name__ == "__main__":
